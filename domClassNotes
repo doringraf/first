@@ -1,0 +1,199 @@
+
+==========================================================================
+
+getElementById() - Select elements by their id
+
+    <body>
+        
+        <p id="para1">Some text for this class</p>
+        
+        <input type="button"  onclick="changeStyle()" value="Submit">
+    
+    </body>
+
+    function changeStyle(){
+    
+    document.getElementById("para1").style.color="red";
+    document.getElementById("para1").style.backgroundColor="blue";
+    document.getElementById("para1").style.fontStyle="italic";
+    
+    
+}
+
+==========================================================================
+
+getElementsByTagName() - The getElementsByTagName() method returns a collection of all elements in the document with the specified tag name.
+
+    <body>
+        
+        <p id="para1">Some text for this class-1</p>
+        <p id="para2">Some text for this class-2</p>
+        <p id="para3">Some text for this class-3</p>
+        <p id="para4">Some text for this class-4</p>
+        
+        
+        <input type="button"  onclick="changeStyle()" value="Submit">
+    
+    </body>
+
+
+    function changeStyle(){
+    
+    var paragraph = document.getElementsByTagName("p");
+    
+    for(var i=0;i<paragraph.length;i++){
+        paragraph[i].style.color="green";
+    }
+  
+}
+
+==========================================================================
+
+getElementsByClassName() - Select elements by their class name 
+
+    <body>
+        
+        <p class="para">Some text for this class-1</p>
+        <p class="para">Some text for this class-2</p>
+        <p class="para">Some text for this class-3</p>
+        <p class="para">Some text for this class-4</p>
+        
+        
+        <input type="button"  onclick="changeStyle()" value="Submit">
+    
+    </body>
+
+    function changeStyle(){
+    
+    var paragraph = document.getElementsByClassName("para");
+    
+    //paragraph[0].style.color="blue";
+    
+    for(var i=0;i<paragraph.length;i++){
+        paragraph[i].style.color="green";
+    }
+  
+}
+
+==========================================================================
+
+innerHTML - innerHTML property sets or returns the HTML content of an element
+
+    <body>
+        
+        <p id="myP">I am a paragraph</p>
+        <p>Click the button get the HTML content of the p element</p>
+        <input type="button"  onclick="changeStyle()" value="Submit">
+        
+        <p id="demo"></p>
+        
+    </body>
+
+    function changeStyle(){
+    
+    var x = document.getElementById("myP").innerHTML;
+    document.getElementById("demo").innerHTML=x;
+  
+}
+
+==========================================================================
+
+Task:
+
+Hello There. -->class="para"
+This is Mike Smith   -->class="para"
+
+Hello There.This is Mike Smith
+
+    <body>
+        
+        <p class="para">Hello There.</p>
+        <p class="para">This is Mike Smith</p>
+        <input type="button"  onclick="changeStyle()" value="Submit">
+        
+        <p id="para">Apple</p>
+        
+        
+    </body>
+
+    function changeStyle(){
+    
+    var arr=document.getElementsByClassName("para");
+    var text1=arr[0].innerHTML;
+    var text2=arr[1].innerHTML;
+    
+    document.getElementById("para").innerHTML=`${text1} ${text2}`;
+}
+
+==========================================================================
+
+querySelector() - Get the first element in the document
+
+    <body>
+        
+        <p>Hello There.</p>
+        <p>This is Mike Smith</p>
+        <p>I love JavaScript</p>
+        
+        <input type="button"  onclick="changeStyle()" value="Submit">
+        
+        <p id="para"></p>
+        
+        
+    </body>
+
+    function changeStyle(){
+    
+    document.querySelector("p").style.color="red";
+}
+
+==========================================================================
+
+    var itemlist=document.querySelector("#items");
+    //console.log(itemlist);
+    
+    //Parent Node
+    //console.log(itemlist.parentNode);
+    //itemlist.parentNode.style.color="green";
+    
+    //ParentElement
+    //console.log(itemlist.parentElement);
+    //itemlist.parentElement.style.color="green";
+    
+    //ChilNodes
+    //console.log(itemlist.childNodes);
+    
+    //firstElementChild
+    //console.log(itemlist.firstElementChild);
+    //itemlist.firstElementChild.innerHTML="Hello";
+    
+    //lastElementChild
+    //console.log(itemlist.lastElementChild);
+    //itemlist.lastElementChild.style.color="red";
+    
+    //nextElementSibling
+    //console.log(itemlist.nextElementSibling);
+    
+    //previousSibling
+    //console.log(itemlist.previousElementSibling);
+    //itemlist.previousElementSibling.style.color="blue";
+
+
+==========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
