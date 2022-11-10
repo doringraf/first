@@ -1,0 +1,93 @@
+{
+  "name": "degreedautomation",
+  "version": "1.0.0",
+  "description": "degreed automation testing ",
+  "main": "index.js",
+  "dependencies": {
+    "axe-core": "^4.4.1",
+    "cypress-grep": "^2.5.3",
+    "ftp": "^0.3.10",
+    "lodash": "^4.17.21",
+    "node-xlsx": "^0.17.1",
+    "path": "^0.12.7"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^5.6.0",
+    "@types/cheerio": "^0.22.22",
+    "@types/cypress": "^1.1.3",
+    "@types/cypress-cucumber-preprocessor": "^4.0.1",
+    "@types/lodash": "^4.14.172",
+    "@types/node": "^14.0.26",
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.9.1",
+    "async": "^3.2.4",
+    "cheerio": "^1.0.0-rc.3",
+    "cypress": "^10.10.0",
+    "cypress-audit": "^1.1.0",
+    "cypress-axe": "^1.0.0",
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-file-upload": "^4.1.1",
+    "cypress-mailosaur": "^2.1.3",
+    "cypress-repeat": "^2.3.1",
+    "cypress-terminal-report": "^3.4.2",
+    "cypress-wait-until": "^1.7.1",
+    "dayjs": "^1.9.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "fs": "0.0.1-security",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.2.11",
+    "mailosaur": "^7.1.0",
+    "mocha": "^10.0.0",
+    "prettier": "^2.0.5",
+    "read-excel-file": "^5.5.0",
+    "ssh2-sftp-client": "^9.0.4",
+    "ts-loader": "^7.0.5",
+    "typescript": "^3.9.5",
+    "webpack": "^4.46.0",
+    "xlsx": "^0.17.0"
+  },
+  "scripts": {
+    "lint": "eslint . --ext .js,.ts,.json",
+    "lint:fix": "npm run lint --fix",
+    "pipeline-staging": "cypress-tags run -e fixture=staging,TAGS='not (@disabled)'",
+    "pipeline-staging-dashboard": "cypress-tags run -e fixture=staging,TAGS='not (@disabled)' --record --key $CYPRESS_KEY -t 'staging-Regression'",
+    "pipeline-release": "cypress-tags run -e fixture=release,TAGS='not (@disabled)'",
+    "pipeline-release-dashboard": "cypress-tags run -e fixture=release,TAGS='not (@disabled)' --record --key $CYPRESS_KEY -t 'release-Regression'",
+    "bvt-staging": "cypress-tags run -e fixture=staging,TAGS='@BVT'",
+    "bvt-staging-dashboard": "cypress-tags run -e fixture=staging,TAGS='@BVT' --record --key $CYPRESS_KEY -t 'staging-BVT'",
+    "bvt-release": "cypress-tags run -e fixture=release,TAGS='@BVT'",
+    "bvt-release-dashboard": "cypress-tags run -e fixture=release,TAGS='@BVT' --record --key $CYPRESS_KEY -t 'release-BVT'",
+    "disabled-staging": "cypress-tags run -e fixture=staging,TAGS='@disabled'",
+    "disabled-staging-dashboard": "cypress-tags run -e fixture=staging,TAGS='@disabled' --record --key $CYPRESS_KEY -t 'staging-Disabled'",
+    "disabled-release": "cypress-tags run -e fixture=release,TAGS='@disabled'",
+    "disabled-release-dashboard": "cypress-tags run -e fixture=release,TAGS='@disabled' --record --key $CYPRESS_KEY -t 'release-Disabled'",
+    "alltest-staging": "cypress-tags run -e fixture=staging",
+    "alltest-staging-dashboard": "cypress-tags run -e fixture=staging --record --key $CYPRESS_KEY -t 'staging-Regression-All'",
+    "alltest-release": "cypress-tags run -e fixture=release",
+    "alltest-release-dashboard": "cypress-tags run -e fixture=release --record --key $CYPRESS_KEY -t 'release-Regression-All'",
+    "cy:verify": "cypress verify",
+    "cy:info": "cypress info",
+    "cy:version": "cypress version",
+    "cy:cache:list": "cypress cache list",
+    "cy:run": "cypress run",
+    "cy:run:record": "cypress run --record",
+    "cy:open": "cypress open",
+    "test": "cypress-tags run --config pageLoadTimeout=60000,defaultCommandTimeout=60000,requestTimeout=60000,responseTimeout=60000 -g 'cypress/integration/FrontendIntegration/**/*.feature' -e fixture=localhost,TAGS='@smoketest and not (@private)' && cypress run --config pageLoadTimeout=60000,defaultCommandTimeout=60000,requestTimeout=60000,responseTimeout=60000 --spec 'cypress/integration/BackendIntegration/**/*,cypress/integration/BackendIntegration/**/**/*' -e fixture=localhost,grepTags='-private+@smoketest'  && cypress-tags run --config pageLoadTimeout=60000,defaultCommandTimeout=60000,requestTimeout=60000,responseTimeout=60000 -e fixture=localhost,TAGS='@smoketest and not (@private)'",
+    "testMSTeams": "cypress-tags run --config pageLoadTimeout=60000,defaultCommandTimeout=60000,requestTimeout=60000,responseTimeout=60000 -e fixture=localhost,TAGS=\"@MSTeams and not (@disabled)\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
+  "keywords": [
+    "testing"
+  ],
+  "author": "Tim Wang",
+  "license": "ISC"
+}
